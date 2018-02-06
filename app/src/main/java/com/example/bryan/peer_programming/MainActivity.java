@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String get_url = "http://ec2-52-55-73-180.compute-1.amazonaws.com/get_users";
-        String add_url = "http://ec2-52-55-73-180.compute-1.amazonaws.com/add_user";
-        final TextView text_get = findViewById(R.id.text_get);
+        String get_url = "http://ec2-52-55-73-180.compute-1.amazonaws.com/get_users"; //These two are the methods set in the database, the first being the get method
+        String add_url = "http://ec2-52-55-73-180.compute-1.amazonaws.com/add_user"; //And the second being the add method
+        final TextView text_get = findViewById(R.id.text_get); //We initialize our xml elements here
         final EditText text_add = findViewById(R.id.text_add);
         Button button_get = findViewById(R.id.button_get);
         Button button_add = findViewById(R.id.button_add);
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = Volley.newRequestQueue(this); //the queue system to ensure the add and get method works fine
 
-        final JsonObjectRequest get_request = new JsonObjectRequest(Request.Method.GET,get_url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest get_request = new JsonObjectRequest(Request.Method.GET,get_url, null, new Response.Listener<JSONObject>() { //The get method, it pulls the database and post the list on the textview
             @Override
             public void onResponse(JSONObject response) {
                 String myString = new String();
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Get_Wrong");
             }
         });
-        final StringRequest post_request = new StringRequest(Request.Method.POST,add_url, new Response.Listener<String>() {
+        final StringRequest post_request = new StringRequest(Request.Method.POST,add_url, new Response.Listener<String>() { //The add method, it puts whatever the user types on the edittext to the database
             @Override
             public void onResponse(String response) {
             }
