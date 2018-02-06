@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 queue.add(get_request);
             }
-        });
+        }); //the button methods
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
